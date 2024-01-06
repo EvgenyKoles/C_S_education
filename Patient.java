@@ -87,6 +87,15 @@ public class Patient {
 		return Allergy;
 	}
 
+	public String getLname(){
+		return Lname;
+	}
+
+	public String getVaccineType(){
+
+		return VaccineType;
+	}
+
 	// for appropriate print
 	@Override
 	public String toString(){
@@ -202,21 +211,24 @@ public class Patient {
 
 	
 	public static void completed_vaccine_doses (ArrayList<Patient> list){
-
+		
 		Map<Integer, Integer> doseCouns = new HashMap<>();
-
+		Set <Integer> printedNumbers  = new HashSet<>();
 		for (Patient patient : list){ // itterate by a ArrayList
 			int dose = patient.getNumber(); 
 			doseCouns.put(dose, doseCouns.getOrDefault(dose, 0)+1); //add patients with a count of doses
 		}
+		for (Patient patient: list) { 
+			if (!printedNumbers.contains(patient.getNumber())){
+				Integer number = doseCouns.get(patient.getNumber());
 
-		for (Map.Entry<Integer, Integer> entry : doseCouns.entrySet()) { // itterate by a new HashMap 
-			if (entry.getValue() >= 3) { // chose where doses more than 3 
-				
-				System.out.println (list.get(entry.getKey()-1).Number + " " //print a result
-				+ list.get(entry.getKey()-1).Fname + " " + list.get(entry.getKey()-1).Lname
-				+ " " + list.get(entry.getKey()-1).Age + " " + list.get(entry.getKey()-1).Allergy 
-				+ " " + list.get(entry.getKey()-1). VaccineType + " " +  entry.getValue() );	
+			if (number >= 3) { // chose where doses more than 3 and Patient Age more or equal than 70
+				System.out.println(patient.getNumber() + " " + patient.getFname() + " " +
+                patient.getLname() + " " + patient.getAge() + " " +
+                patient.getAllergy() + " " + patient.getVaccineType() + " "+  number
+				);	
+			}
+			printedNumbers.add(patient.getNumber());
 			}
         }
 	}
@@ -224,19 +236,27 @@ public class Patient {
 	public static void lowest_vaccine_doses (ArrayList<Patient> list){
 
 		Map<Integer, Integer> doseCouns = new HashMap<>();
+		Set <Integer> printedNumbers  = new HashSet<>();
 
 		for (Patient patient : list){ // itterate by a ArrayList
 			int dose = patient.getNumber(); 
 			doseCouns.put(dose, doseCouns.getOrDefault(dose, 0)+1); //add patients with a count of doses
 		}
+		for (Patient patient: list) { 
 
-		for (Map.Entry<Integer, Integer> entry : doseCouns.entrySet()) { // itterate by a new HashMap 
-			if (entry.getValue() < 3 && list.get(entry.getKey()-1).Age >= 70) { // chose where doses more than 3 and Patient Age more or equal than 70
+			if (!printedNumbers.contains(patient.getNumber())){
+
+				Integer number = doseCouns.get(patient.getNumber());
+
+			if (number < 3 && patient.getAge() >= 70) { // chose where doses more than 3 and Patient Age more or equal than 70
 				
-				System.out.println (list.get(entry.getKey()-1).Number + " "  //print a result
-				+ list.get(entry.getKey()-1).Fname + " " + list.get(entry.getKey()-1).Lname
-				+ " " + list.get(entry.getKey()-1).Age + " " + list.get(entry.getKey()-1).Allergy 
-				+ " " + list.get(entry.getKey()-1). VaccineType + " " +  entry.getValue() );	
+				System.out.println(patient.getNumber() + " " + patient.getFname() + " " +
+                patient.getLname() + " " + patient.getAge() + " " +
+                patient.getAllergy() + " " + patient.getVaccineType() + " " +  number
+				);	
+
+			}
+			printedNumbers.add(patient.getNumber());
 			}
         }
 	}
@@ -342,8 +362,11 @@ public class Patient {
             {"6","Bill", "Harley", "70", "PS80", "AstraZeneca", "07/21/2021"},
             {"3","Mariam", "Dawson", "27", "Gelatin", "Pfizer", "07/17/2021"},
             {"4","Emmett", "Miller", "30", "Gelatin", "Pfizer", "07/20/2021"},
-            {"3","Mariam", "Dawson", "27", "Gelatin", "Pfizer", "08/19/2021"}
-			//{"4","Emmett", "Miller", "30", "Gelatin", "Pfizer", "08/20/2021"}
+            {"3","Mariam", "Dawson", "27", "Gelatin", "Pfizer", "08/19/2021"},
+			{"7","Jonh", "Hawson", "77", "Gelatin", "Pfizer", "08/12/2021"},
+			{"8","Evgeny", "Koles", "78", "Gelatin", "Pfizer", "01/01/2021"},
+			{"7","Jonh", "Hawson", "77", "Gelatin", "Pfizer", "08/06/2021"},
+			{"4","Emmett", "Miller", "30", "Gelatin", "Pfizer", "07/22/2021"}
         };
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
 
@@ -386,7 +409,9 @@ public class Patient {
         }
 // end of created for testing
 
-
+	// for (Patient patient : patientList) {
+    //         System.out.println(patient);
+    //     }
 
 
 		// fill the table ( !!!!!add ID for every patient later)
@@ -396,9 +421,12 @@ public class Patient {
 		//vaccine_type_given_to_patients(patientList);
 		//next_vaccination_appointment(patientList);
 		//patient_count_based_on_allergy_type(patientList);
-		//completed_vaccine_doses(patientList);		
+		completed_vaccine_doses(patientList);		
 		//lowest_vaccine_doses(patientList);
 		//user_input_data();
+
+
+
 
 	}
 }
