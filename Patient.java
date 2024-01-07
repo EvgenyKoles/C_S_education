@@ -211,7 +211,7 @@ public class Patient {
 
 	
 	public static void completed_vaccine_doses (ArrayList<Patient> list){
-		
+
 		Map<Integer, Integer> doseCouns = new HashMap<>();
 		Set <Integer> printedNumbers  = new HashSet<>();
 		for (Patient patient : list){ // itterate by a ArrayList
@@ -409,19 +409,18 @@ public class Patient {
         }
 // end of created for testing
 
-	// for (Patient patient : patientList) {
-    //         System.out.println(patient);
-    //     }
+		// for (Patient patient : patientList) {
+    	//         System.out.println(patient);
+   	 	//     }
 
 
-		// fill the table ( !!!!!add ID for every patient later)
 
 			//RUN
 		//how_many_patients_are_given_each_vaccination_type(patientList);
 		//vaccine_type_given_to_patients(patientList);
 		//next_vaccination_appointment(patientList);
 		//patient_count_based_on_allergy_type(patientList);
-		completed_vaccine_doses(patientList);		
+		//completed_vaccine_doses(patientList);		
 		//lowest_vaccine_doses(patientList);
 		//user_input_data();
 
