@@ -26,8 +26,5 @@ public class TestStudent {
 		for (int element : maxHeap) {
             System.out.print(element + " ");
         }
-		
-
 	}
-
 }
