@@ -1,0 +1,7 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.jdt.ls.java.home": "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+
+ 
+}
