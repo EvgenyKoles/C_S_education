@@ -8,8 +8,7 @@ class UDPClient {
 public static void main(String args[]) throws Exception
 {
 
-    System.out.println("Client runnng");
-
+    System.out.println("Client runnng"); 
 BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 DatagramSocket clientSocket = new DatagramSocket();
 
