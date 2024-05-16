@@ -30,4 +30,4 @@ System.out.println("FROM SERVER: " + modifiedSentence);
 clientSocket.close();
 
     }
-}
+} 
