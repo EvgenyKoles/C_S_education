@@ -1,0 +1,14 @@
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def start_engine(self):
+        return f"{self.brand} engine started."
+
+class Car(Vehicle):
+    def open_trunk(self):
+        return "Trunk opened."
+
+my_car = Car("Toyota")
+print(my_car.start_engine())  # ✅ Output: Toyota engine started.
+print(my_car.open_trunk())    # ✅ Output: Trunk opened.
